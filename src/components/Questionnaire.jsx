@@ -1,19 +1,34 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { questions } from "../data/questions.js";
+import { QuestionnaireContext } from "../App";
 
 function Questionnaire() {
+  const { setResponses, responses } = useContext(QuestionnaireContext);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(
-    questions[currentQuestion].options[0]
-  );
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const handleChange = (e) => {
     setSelectedOption(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!selectedOption) return;
+
+    setResponses((prevResponses) => [
+      ...prevResponses,
+      { question: questions[currentQuestion].question, answer: selectedOption },
+    ]);
+
+    setSelectedOption(null);
+
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
+    }
+
+    if (currentQuestion === questions.length - 1) {
+      console.log("Results: ", responses);
     }
   };
   return (
