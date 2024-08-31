@@ -12,6 +12,7 @@
   "type": "module",
   "dependencies": {
     "convex": "^1.15.0",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "openai": "^4.57.0"
   }
 }
