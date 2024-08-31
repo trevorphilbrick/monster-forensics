@@ -1,15 +1,21 @@
 import { useState, useContext } from "react";
 import { questions } from "../data/questions.js";
-import { QuestionnaireContext } from "../App";
+import { QuestionnaireContext, CurrentDisplayContext } from "../App";
 
 function Questionnaire() {
   const { setResponses, responses } = useContext(QuestionnaireContext);
+  const { setCurrentDisplay } = useContext(CurrentDisplayContext);
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleChange = (e) => {
     setSelectedOption(e.target.value);
   };
+
+  const submitResponse = async () => {
+    const response = await fetch("/api/createImage", {
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +34,8 @@ function Questionnaire() {
     }
 
     if (currentQuestion === questions.length - 1) {
-      console.log("Results: ", responses);
+
+      setCurrentDisplay("results");
     }
   };
   return (
