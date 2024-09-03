@@ -55,15 +55,17 @@ function Questionnaire() {
           <label htmlFor={option}>{option}</label>
         </div>
       ))}
-
-      <button
-        className="self-end px-4 py-2 bg-green-400 text-white font-bold"
-        type="submit"
-      >
-        {currentQuestion < questions.length - 1
-          ? "Next Question"
-          : "Get Results"}
-      </button>
+      <div className="self-end flex gap-4 items-center">
+        <p>{`${currentQuestion + 1}/${questions.length}`}</p>
+        <button
+          className="self-end px-4 py-2 bg-green-400 text-white font-bold"
+          type="submit"
+        >
+          {currentQuestion < questions.length - 1
+            ? "Next Question"
+            : "Get Results"}
+        </button>
+      </div>
     </form>
   );
 }

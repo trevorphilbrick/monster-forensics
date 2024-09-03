@@ -9,7 +9,7 @@ export const createImage = httpAction(async (ctx, request) => {
   try {
     const result = await openai.images.generate({
       model: "dall-e-3",
-      prompt: `Given the following survey, create an ultra-realistic image of a monster that fits this description:\n\n${body} \n Don't add any text on the image. `,
+      prompt: `Given the following survey, create an ultra-realistic image of a monster that fits this description:\n\n${body} \n Don't add any text on the image. Match the description as much as possible. `,
       n: 1,
       size: "1024x1024",
     });
