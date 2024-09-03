@@ -1,5 +1,5 @@
 import { httpRouter } from "convex/server";
-import { createImage } from "./functions";
+import { createImage, getImage } from "./functions";
 
 const http = httpRouter();
 
